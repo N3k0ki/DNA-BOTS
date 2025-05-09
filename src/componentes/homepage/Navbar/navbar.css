@@ -1,0 +1,123 @@
+/* --- Navbar --- */
+.navbar {
+    padding: 5% 5%;
+    /* Levemente menos padding vertical */
+    background-color: #f9f9f9;
+    position: relative;
+    /* Para posicionar o menu mobile */
+    z-index: 100;
+    /* Navbar acima do conteúdo */
+  }
+  
+  /* Estilos base para a lista (escondida em mobile por padrão) */
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+    /* Escondido em mobile por padrão */
+    /* Estilos para quando estiver aberto em mobile (serão adicionados pela classe .open) */
+  }
+  
+  /* Estilos para Tablet/Desktop (mostra a lista horizontalmente) */
+  @media (min-width: 768px) {
+    .navbar ul {
+      display: flex;
+      /* Mostrar como flex em telas maiores */
+      flex-wrap: wrap;
+      justify-content: right;
+      /* Alinhar à direita em telas maiores */
+      gap: 15px 25px;
+      /* Gap padrão para tablet/desktop */
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+  
+    .navbar ul li {
+      /* Estilos específicos para itens de desktop se necessário */
+      padding: 0;
+      /* Reset padding se houver do mobile */
+      border-bottom: none;
+      /* Reset border se houver do mobile */
+      width: auto;
+      /* Reset width se houver do mobile */
+      text-align: left;
+      /* Reset text-align se houver do mobile */
+    }
+  }
+  
+  .navbar ul li {
+    cursor: pointer;
+    /* Indicar que são clicáveis */
+  }
+  
+  /* Botão Hambúrguer (visível apenas em mobile) */
+  .menu-toggle {
+    display: block;
+    /* Mostrar em mobile */
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    /* Tamanho do ícone */
+    padding: 5px;
+    position: absolute;
+    /* Posicionar em relação à navbar */
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 110;
+    /* Acima do menu quando fechado */
+  }
+  
+  @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+      /* Esconder em telas maiores */
+    }
+  }
+  
+  /* Estilos do Menu Aberto (Mobile) */
+  .navbar ul.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    /* Logo abaixo da navbar */
+    left: 0;
+    right: 0;
+    background-color: #f9f9f9;
+    padding: 20px 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+    /* Espaçamento vertical entre itens */
+    align-items: center;
+    /* Centralizar itens */
+    /* Animação */
+    animation: slideDown 0.4s ease-out forwards;
+    transform-origin: top center;
+  }
+  
+  .navbar ul.open li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    /* Separador leve */
+  }
+  
+  .navbar ul.open li:last-child {
+    border-bottom: none;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-15px) scaleY(0.9);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+    }
+  }
