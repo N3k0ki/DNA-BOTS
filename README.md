@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# 🌐 DNA BOTS - Site Oficial da Equipe de Robótica
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao repositório do **site oficial da equipe DNA BOTS**, desenvolvido para apresentar nossa história, membros, temporadas, patrocinadores e muito mais!
 
-## Available Scripts
+## 🚀 Sobre o Projeto
 
-In the project directory, you can run:
+O site tem como objetivo divulgar a trajetória da equipe DNA BOTS nas competições de robótica, como a **FIRST LEGO League Challenge (FLLC)**, e fortalecer a comunicação com o público, patrocinadores e comunidade escolar.
 
-### `npm start`
+## 🧠 Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Página inicial com seções sobre:
+  - Quem somos
+  - Citação motivacional
+  - Patrocinadores
+  - Temporadas (Submerged, Masterpiece, etc.)
+  - Membros da equipe (carrossel interativo)
+- Design responsivo para desktop e mobile
+- Organização de arquivos e componentes React por seções
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tecnologias Utilizadas
 
-### `npm test`
+- [React.js](https://reactjs.org/)
+- HTML5 e CSS3
+- JavaScript (ES6+)
+- Git e GitHub
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 Estrutura de Pastas
 
-### `npm run build`
+src/
+├── assets/              # Imagens da equipe, membros e temporadas
+├── componentes/         # Componentes reutilizáveis da homepage
+├── styles/              # Estilos globais
+├── _routes.js           # Definição de rotas
+└── App.js               # Componente principal
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 👥 Sobre a Equipe
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A **DNA BOTS** é formada por alunos da Escola Municipal Margarida Soares Guimarães (Betim - MG), que participam do FLLC com o objetivo de resolver problemas reais usando ciência e tecnologia.
 
-### `npm run eject`
+## 💡 Como Contribuir
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Faça um fork deste repositório
+2. Crie uma branch: `git checkout -b minha-feature`
+3. Commit suas mudanças: `git commit -m 'Adiciona nova funcionalidade'`
+4. Push para a branch: `git push origin minha-feature`
+5. Abra um Pull Request
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📷 Prévia
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Em breve...
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📝 Licença
 
-## Learn More
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Com ❤️ por DNA BOTS.
