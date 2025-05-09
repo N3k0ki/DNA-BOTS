@@ -1,17 +1,24 @@
 // src/pages/Home.js
-import React, { useState, useEffect, useRef } from 'react'; // Importar Hooks
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import AboutUs from './componentes/homepage/AboutUsSection/aboutus';
+import Sponsor from './componentes/homepage/SponsorSection/Sponsor';
+import NavBar from './componentes/homepage/Navbar/navbar';
 import './App.css'; // Certifique-se que o CSS está sendo importado corretamente
-import ESub from "./assets/Dnabots.jpg";
-import EMaster from "./assets/EquipeMasterpiece.jpeg";
-import Esub2 from "./assets/dna.jpg";
-import Master from "./assets/masterpiece.png";
-import Sub from "./assets/submerged.png";
-import Une from "./assets/unearthed.png";
+
+// Suas importações de imagens
+import ESub from "./assets/temporadas/submerged/Dnabots.jpg";
+
+import Master from "./assets/temporadas/masterpiece/masterpiece.png";
+import Sub from "./assets/temporadas/submerged/submerged.png";
+import Une from "./assets/temporadas/unearthed/unearthed.png";
 import { useNavigate } from 'react-router-dom';
+import isabelle from './assets/membros/Submerged/isabelle.png';
+import daniela from './assets/membros/Submerged/daniela.png';
+import izabella from './assets/membros/Submerged/izabella.png';
 
 function Home() {
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para o menu mobile
+  const [/*isMenuOpen*/, setIsMenuOpen] = useState(false);
 
   const seasons = [
     { title: "Masterpiece", image: Master, cssClass: "bg-masterpiece", path: "/temporada/masterpiece" },
@@ -19,13 +26,9 @@ function Home() {
     { title: "Unearthed", image: Une, cssClass: "bg-unearthed", path: "/temporada/unearthed" },
   ];
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   // --- Lógica para Animação de Scroll ---
-  const revealRefs = useRef([]); // Array para guardar refs dos elementos a animar
-  revealRefs.current = []; // Limpar em cada render
+  const revealRefs = useRef([]);
+  revealRefs.current = [];
 
   const addToRefs = (el) => {
     if (el && !revealRefs.current.includes(el)) {
@@ -33,139 +36,142 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    // Garante que estamos no lado do cliente antes de usar IntersectionObserver
-    if (typeof window === 'undefined') {
-      return; // Não faz nada no lado do servidor
+  // --- Dados dos Competidores ---
+  const competidores = [
+    { id: 1, nome: 'Isabelle', imagem: isabelle },
+    // { id: 2, nome: 'Ana Clara', imagem: anaClara },
+    // { id: 3, nome: 'Geovanna', imagem: geovanna },
+    // { id: 4, nome: 'João', imagem: joao },
+    // { id: 5, nome: 'Stefany', imagem: stefany },
+    { id: 6, nome: 'Daniela', imagem: daniela },
+    { id: 7, nome: 'Izabella', imagem: izabella },
+    // { id: 8, nome: 'Poliane', imagem: poliane },
+    // { id: 9, nome: 'Matheus', imagem: matheus },
+  ];
+
+  // --- Lógica do Carrossel de Competidores ---
+  const [carouselCurrentIndex, setCarouselCurrentIndex] = useState(0);
+  const itemsPerCarouselPage = 3;
+  const totalCarouselPages = Math.ceil(competidores.length / itemsPerCarouselPage);
+  const carouselTrackRef = useRef(null);
+  const touchStartXRef = useRef(0);
+  const touchEndXRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const MIN_SWIPE_DISTANCE = 50; // Mínimo de pixels para considerar um swipe
+
+  const goToCarouselPage = useCallback((pageIndex) => {
+    setCarouselCurrentIndex(pageIndex);
+  }, []);
+
+  const handleCarouselPrev = () => {
+    setCarouselCurrentIndex((prev) => (prev === 0 ? totalCarouselPages - 1 : prev - 1));
+  };
+
+  const handleCarouselNext = () => {
+    setCarouselCurrentIndex((prev) => (prev === totalCarouselPages - 1 ? 0 : prev + 1));
+  };
+
+  const handleCarouselTouchStart = (e) => {
+    touchStartXRef.current = e.targetTouches[0].clientX;
+    isDraggingRef.current = false;
+  };
+
+  const handleCarouselTouchMove = (e) => {
+    touchEndXRef.current = e.targetTouches[0].clientX;
+    if (Math.abs(touchStartXRef.current - touchEndXRef.current) > 10) {
+      isDraggingRef.current = true;
     }
+  };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          // observer.unobserve(entry.target); // Descomente para animar apenas uma vez
-        } else {
-          // entry.target.classList.remove('visible'); // Descomente para reverter animação
-        }
-      });
-    }, // <<<<<<<<<<<<<<<<<<<<<<< A VÍRGULA ESTÁ AQUI AGORA
-      { // Início do objeto de opções
-        threshold: 0.1 // Trigger quando 10% visível
-      }); // Fim do new IntersectionObserver()
+  const handleCarouselTouchEnd = () => {
+    if (!isDraggingRef.current) return; // Se não foi um arrasto significativo
 
-    const currentRefs = revealRefs.current; // Copia as refs para usar no cleanup
+    const swipeDistance = touchStartXRef.current - touchEndXRef.current;
+    if (swipeDistance > MIN_SWIPE_DISTANCE) {
+      handleCarouselNext();
+    } else if (swipeDistance < -MIN_SWIPE_DISTANCE) {
+      handleCarouselPrev();
+    }
+    // Resetar isDraggingRef aqui é importante para permitir cliques após um swipe curto que não mudou de página.
+    // No entanto, o if no início da função já trata isso.
+  };
 
+  const handleCompetidorCardClick = (competidor, e) => {
+    if (isDraggingRef.current) {
+      e.preventDefault(); // Previne a navegação ou outra ação se foi um swipe
+      return;
+    }
+    // Lógica de clique no competidor (ex: navegar para página de detalhes)
+    console.log('Clicou em:', competidor.nome);
+    // navigate(`/competidor/${competidor.id}`); // Exemplo de navegação
+  };
+
+  // Agrupar competidores em páginas para o carrossel
+  const carouselPages = [];
+  for (let i = 0; i < competidores.length; i += itemsPerCarouselPage) {
+    carouselPages.push(competidores.slice(i, i + itemsPerCarouselPage));
+  }
+  // --- Fim da Lógica do Carrossel ---
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            // entry.target.classList.remove('visible'); // Para reverter animação ao sair da tela
+          }
+        });
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    const currentRefs = revealRefs.current;
     currentRefs.forEach(ref => {
-      if (ref) { // Garante que a ref existe
+      if (ref) {
         observer.observe(ref);
       }
     });
 
-    // Cleanup observer on component unmount
     return () => {
       currentRefs.forEach(ref => {
         if (ref) {
-          observer.unobserve(ref); // Importante desobservar
+          observer.unobserve(ref);
         }
       });
     };
-  }, []); // Array de dependências vazio, executa apenas uma vez na montagem/desmontagem
+  }, []);
 
-  // Função auxiliar para navegação e fechar menu
   const handleNavClick = (path) => {
-    // Adiciona uma verificação básica para o path
     if (path && typeof path === 'string') {
       navigate(path);
     } else {
       console.error("Caminho de navegação inválido:", path);
     }
-    setIsMenuOpen(false); // Fecha o menu ao navegar
-  }
-
-
+    setIsMenuOpen(false);
+  };
   return (
     <div className="App">
-      <nav className="navbar">
-        {/* Botão Hambúrguer */}
-        <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu">
-          {isMenuOpen ? '✕' : '☰'} {/* Alterna ícone */}
-        </button>
-
-        {/* Lista de Navegação */}
-        {/* Adiciona a classe 'open' condicionalmente */}
-        <ul className={isMenuOpen ? 'open' : ''}>
-          {/* Atualizar itens para usar handleNavClick */}
-          <li onClick={() => handleNavClick('/')}>Sobre</li>
-          {/* Os itens abaixo precisam ter rotas válidas definidas no seu Router */}
-          <li onClick={() => handleNavClick('/patrocinador')}>Seja Patrocinador</li>
-          <li onClick={() => handleNavClick('/temporadas')}>Temporadas</li>
-          <li onClick={() => handleNavClick('/competidores')}>Competidores</li>
-        </ul>
-      </nav>
-
-      {/* Adicionar ref={addToRefs} e class="reveal" aos elementos/seções a animar */}
-
-      <section className="img-section"> {/* Primeira seção geralmente não animada */}
-        <img
-          className="background-img"
-          src={ESub}
-          alt="Equipe DNA Bots em competição"
-        />
+        <NavBar />
+      <section className="img-section">
+        <img className="background-img" src={ESub} alt="Equipe DNA Bots em competição" />
         <div className="overlay">
           <h1 className="title">DNA <span>BOTS</span></h1>
           <p className="slogan">“A robótica está no nosso DNA!”</p>
         </div>
       </section>
 
-      {/* Adicionar ref e classe reveal */}
-      <section className="sobre-nos reveal" ref={addToRefs}>
-        <div className="container">
-          <div className="imagem">
-            <img src={EMaster} alt="Equipe DNA Bots Masterpiece" />
-          </div>
-          <div className="texto">
-            <h2>Sobre nós</h2>
-            <p>
-              Somos a <span className="destaque">DNA Bots</span>, uma equipe de robótica da Escola Municipal Margarida Soares Guimarães,
-              localizada em Betim, Minas Gerais. Nossa equipe é formada por alunos do ensino fundamental, unidos pela curiosidade,
-              criatividade e vontade de transformar o mundo com a ajuda da tecnologia.
-            </p>
-            {/* Idealmente, este botão deveria navegar para uma seção/página de "Saiba Mais" */}
-            <a href="#sobre-nos" className="botao">SAIBA MAIS ➤</a>
-          </div>
-        </div>
-      </section>
+      <AboutUs />
+      <Sponsor />
 
-      {/* Adicionar ref e classe reveal à seção inteira */}
-      <section className="reveal" ref={addToRefs}>
-        <div className="sponsor-container">
-          {/* Pode-se adicionar a classe reveal aos filhos também para animação escalonada se desejar */}
-          <div className="sponsor-left">
-            <h2 className="sponsor-title">Por que ser um patrocinador?</h2>
-            <img
-              src={Esub2}
-              alt="Detalhe robô DNA Bots"
-              className="sponsor-image"
-            />
-          </div>
-          <div className="sponsor-right">
-            <div className="sponsor-item">
-              <h3><span>01</span> Visibilidade da marca</h3>
-              <p>Sua empresa será divulgada em nossos uniformes, banners, redes sociais e eventos da equipe.</p>
-            </div>
-            <div className="sponsor-item">
-              <h3><span>02</span> Conexão com a educação e inovação</h3>
-              <p>Mostre que sua marca apoia a formação de jovens em áreas como ciência, tecnologia e sustentabilidade.</p>
-            </div>
-            <div className="sponsor-item">
-              <h3><span>03</span> Apoio social com impacto real</h3>
-              <p>Você estará contribuindo diretamente para o crescimento pessoal e profissional de estudantes da rede pública.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Adicionar ref e classe reveal */}
+
       <section className="seasons-section reveal" ref={addToRefs}>
         <h2 className="seasons-title">Temporadas</h2>
         <p className="seasons-subtitle">
@@ -176,9 +182,9 @@ function Home() {
             <div
               key={index}
               className="season-card clickable-card reveal"
-              ref={addToRefs} // Adiciona ref para observação individual
+              ref={addToRefs}
               onClick={() => handleNavClick(season.path)}
-              style={{ transitionDelay: `${index * 0.1}s` }} // Opcional: Stagger animation
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className={`season-image ${season.cssClass}`}>
                 <img src={season.image} alt={`Logo da temporada ${season.title}`} />
@@ -188,8 +194,6 @@ function Home() {
           ))}
         </div>
       </section>
-
-      {/* Adicionar ref e classe reveal */}
       <section className="quoteSection reveal" ref={addToRefs}>
         <blockquote className="quoteText">
           <p>
@@ -200,6 +204,71 @@ function Home() {
           </p>
         </blockquote>
       </section>
+      {/* --- Seção dos Competidores com Carrossel Integrado --- */}
+      <section className="competidores-section reveal" ref={addToRefs}>
+        <p className="competidores-title">Competidores</p>
+        <p className="competidores-subtitle">clique para saber mais!</p>
+
+        <div className="competidores-carousel-container"> {/* Classe principal do CSS */}
+          <div className="carousel-viewport">
+            <div
+              className="carousel-track"
+              ref={carouselTrackRef}
+              onTouchStart={handleCarouselTouchStart}
+              onTouchMove={handleCarouselTouchMove}
+              onTouchEnd={handleCarouselTouchEnd}
+              style={{ transform: `translateX(-${carouselCurrentIndex * 100}%)` }}
+            >
+              {carouselPages.map((page, pageIndex) => (
+                <div className="carousel-slide" key={pageIndex}>
+                  {page.map((competidor, competidorIndex) => (
+                    <div
+                      key={competidor.id || competidorIndex} // Usar ID se disponível, senão index
+                      className="competidor-card-wrapper"
+                      onClick={(e) => handleCompetidorCardClick(competidor, e)}
+                    >
+                      <div className="competidor-card">
+                        <div className="competidor-card-inner">
+                          <img
+                            src={competidor.imagem}
+                            alt={competidor.nome}
+                            className="competidor-image"
+                            draggable="false" // Previne o arrastar padrão da imagem
+                          />
+                          <p className="competidor-nome">{competidor.nome}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Botões de navegação (apenas desktop) */}
+          <button className="carousel-btn left desktop-only" onClick={handleCarouselPrev} aria-label="Anterior">
+            &lt;
+          </button>
+          <button className="carousel-btn right desktop-only" onClick={handleCarouselNext} aria-label="Próximo">
+            &gt;
+          </button>
+
+          {/* Bolinhas de Paginação */}
+          <div className="carousel-dots">
+            {Array.from({ length: totalCarouselPages }).map((_, idx) => (
+              <button
+                key={idx}
+                className={`dot ${carouselCurrentIndex === idx ? 'active' : ''}`}
+                onClick={() => goToCarouselPage(idx)}
+                aria-label={`Ir para página ${idx + 1} do carrossel de competidores`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* --- Fim da Seção dos Competidores --- */}
+
+
     </div>
   );
 }

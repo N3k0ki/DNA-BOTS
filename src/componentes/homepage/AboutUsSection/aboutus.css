@@ -1,0 +1,134 @@
+.sobre-nos {
+    background-color: white;
+    padding: 40px 5%;
+    /* Usar padding percentual */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* Empilhar em mobile */
+    align-items: center;
+    /* Centralizar itens empilhados */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.imagem,
+.texto {
+    flex: 1 1 100%;
+    /* Ocupar toda a largura em mobile */
+    max-width: 500px;
+    /* Limitar largura do texto */
+    text-align: center;
+    /* Centralizar imagem e texto em mobile */
+}
+
+.imagem img {
+    width: 100%;
+    /* Ajustar tamanho */
+    max-width: 400px;
+    /* Limitar tamanho máximo da imagem */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    /* Para centralizar com margin auto */
+    margin: 0 auto;
+    /* Centralizar a imagem dentro do container .imagem */
+}
+
+.texto h2 {
+    color: #ff4ed7;
+    font-size: 2rem;
+    /* Menor para mobile */
+    margin-bottom: 15px;
+}
+
+.texto p {
+    font-size: 1rem;
+    /* Tamanho base para mobile */
+    line-height: 1.6;
+    color: #000;
+    text-align: left;
+    /* Alinhar texto à esquerda para leitura */
+}
+
+.texto .destaque {
+    color: #ff4ed7;
+    font-weight: bold;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    /* Menor padding em mobile */
+    background-color: #ff4ed7;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao:hover {
+    background-color: #e443c4;
+    transform: scale(1.03);
+    /* Efeito sutil no hover */
+}
+
+@media (min-width:1024px) {
+    .sobre-nos {
+        padding: 80px 5%;
+    }
+
+    /* Aumentar o gap na seção sobre nós para dar mais espaço à imagem */
+    .container {
+        gap: 4rem;
+        /* << MAIS ESPAÇO ENTRE IMAGEM E TEXTO */
+    }
+}
+
+@media (min-width:768px) {
+    .sobre-nos {
+        padding: 60px 5%;
+    }
+
+    .container {
+        flex-direction: row;
+        /* Layout lado a lado */
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        /* Resetar alinhamento do container */
+        gap: 40px;
+        /* Espaçamento padrão entre imagem e texto para tablet */
+    }
+
+    .imagem,
+    .texto {
+        flex: 1 1 45%;
+        /* Dividir espaço, permitindo encolher/crescer */
+        text-align: left;
+        /* Alinhar conteúdo à esquerda */
+        min-width: 300px;
+    }
+
+    .imagem img {
+        width: 100%;
+        /* Imagem ocupa o container .imagem */
+        max-width: none;
+        /* Remover limite max-width de mobile */
+        margin: 0;
+        /* Resetar margem */
+    }
+
+    .texto h2 {
+        font-size: 2.5rem;
+    }
+
+    .texto p {
+        font-size: 1.1rem;
+    }
+}

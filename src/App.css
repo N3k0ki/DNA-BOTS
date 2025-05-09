@@ -2,18 +2,25 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px; /* Definir um tamanho base pode ajudar com unidades rem */
-  line-height: 1.6; /* Melhorar legibilidade */
-  color: #333; /* Cor padrão para texto */
-  overflow-x: hidden; /* Prevenir scroll horizontal indesejado */
+  font-size: 16px;
+  /* Definir um tamanho base pode ajudar com unidades rem */
+  line-height: 1.6;
+  /* Melhorar legibilidade */
+  color: #333;
+  /* Cor padrão para texto */
+  overflow-x: hidden;
+  /* Prevenir scroll horizontal indesejado */
 }
 
 /* --- Navbar --- */
 .navbar {
-  padding: 5% 5%; /* Levemente menos padding vertical */
+  padding: 5% 5%;
+  /* Levemente menos padding vertical */
   background-color: #f9f9f9;
-  position: relative; /* Para posicionar o menu mobile */
-  z-index: 100; /* Navbar acima do conteúdo */
+  position: relative;
+  /* Para posicionar o menu mobile */
+  z-index: 100;
+  /* Navbar acima do conteúdo */
 }
 
 /* Estilos base para a lista (escondida em mobile por padrão) */
@@ -21,51 +28,66 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: none; /* Escondido em mobile por padrão */
+  display: none;
+  /* Escondido em mobile por padrão */
   /* Estilos para quando estiver aberto em mobile (serão adicionados pela classe .open) */
 }
 
 /* Estilos para Tablet/Desktop (mostra a lista horizontalmente) */
 @media (min-width: 768px) {
   .navbar ul {
-    display: flex; /* Mostrar como flex em telas maiores */
+    display: flex;
+    /* Mostrar como flex em telas maiores */
     flex-wrap: wrap;
-    justify-content: right; /* Alinhar à direita em telas maiores */
-    gap: 15px 25px; /* Gap padrão para tablet/desktop */
+    justify-content: right;
+    /* Alinhar à direita em telas maiores */
+    gap: 15px 25px;
+    /* Gap padrão para tablet/desktop */
     font-weight: bold;
     letter-spacing: 0.5px;
   }
+
   .navbar ul li {
-     /* Estilos específicos para itens de desktop se necessário */
-     padding: 0; /* Reset padding se houver do mobile */
-     border-bottom: none; /* Reset border se houver do mobile */
-     width: auto; /* Reset width se houver do mobile */
-     text-align: left; /* Reset text-align se houver do mobile */
+    /* Estilos específicos para itens de desktop se necessário */
+    padding: 0;
+    /* Reset padding se houver do mobile */
+    border-bottom: none;
+    /* Reset border se houver do mobile */
+    width: auto;
+    /* Reset width se houver do mobile */
+    text-align: left;
+    /* Reset text-align se houver do mobile */
   }
 }
 
 .navbar ul li {
-  cursor: pointer; /* Indicar que são clicáveis */
+  cursor: pointer;
+  /* Indicar que são clicáveis */
 }
 
 /* Botão Hambúrguer (visível apenas em mobile) */
 .menu-toggle {
-  display: block; /* Mostrar em mobile */
+  display: block;
+  /* Mostrar em mobile */
   cursor: pointer;
   background: none;
   border: none;
-  font-size: 1.8rem; /* Tamanho do ícone */
+  font-size: 1.8rem;
+  /* Tamanho do ícone */
   padding: 5px;
-  position: absolute; /* Posicionar em relação à navbar */
+  position: absolute;
+  /* Posicionar em relação à navbar */
   right: 5%;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 110; /* Acima do menu quando fechado */
+  z-index: 110;
+  /* Acima do menu quando fechado */
 }
 
 @media (min-width: 768px) {
   .menu-toggle {
-    display: none; /* Esconder em telas maiores */
+    display: none;
+    /* Esconder em telas maiores */
   }
 }
 
@@ -74,14 +96,17 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100%; /* Logo abaixo da navbar */
+  top: 100%;
+  /* Logo abaixo da navbar */
   left: 0;
   right: 0;
   background-color: #f9f9f9;
   padding: 20px 5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  gap: 15px; /* Espaçamento vertical entre itens */
-  align-items: center; /* Centralizar itens */
+  gap: 15px;
+  /* Espaçamento vertical entre itens */
+  align-items: center;
+  /* Centralizar itens */
   /* Animação */
   animation: slideDown 0.4s ease-out forwards;
   transform-origin: top center;
@@ -91,8 +116,10 @@ body {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  border-bottom: 1px solid #eee; /* Separador leve */
+  border-bottom: 1px solid #eee;
+  /* Separador leve */
 }
+
 .navbar ul.open li:last-child {
   border-bottom: none;
 }
@@ -102,6 +129,7 @@ body {
     opacity: 0;
     transform: translateY(-15px) scaleY(0.9);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scaleY(1);
@@ -110,209 +138,108 @@ body {
 
 /* --- Hero Section (Imagem de Fundo e Overlay) --- */
 .img-section {
-  position: relative; /* Necessário para o posicionamento absoluto do overlay */
+  position: relative;
+  /* Necessário para o posicionamento absoluto do overlay */
   width: 100%;
-  height: 70vh; /* << ALTURA REDUZIDA PARA MOBILE */
-  overflow: hidden; /* Evitar que a imagem 'vaze' */
+  height: 75vh;
+  /* << ALTURA REDUZIDA PARA MOBILE */
+  overflow: hidden;
+  /* Evitar que a imagem 'vaze' */
 }
 
 .background-img {
   width: 100%;
-  height: 100%; /* Cobrir a altura do container pai */
+  height: 100%;
+  /* Cobrir a altura do container pai */
   object-fit: cover;
-  filter: brightness(0.6); /* Um pouco mais escuro para contraste */
+  filter: brightness(0.6);
+  /* Um pouco mais escuro para contraste */
 }
 
 .overlay {
   position: absolute;
-  top: 50%; /* Centralizar verticalmente */
-  left: 50%; /* Centralizar horizontalmente */
-  transform: translate(-50%, -50%); /* Ajuste fino da centralização */
-  width: 90%; /* Limitar largura em mobile */
-  max-width: 800px; /* Máximo para não ficar muito largo em desktop */
+  top: 50%;
+  /* Centralizar verticalmente */
+  left: 50%;
+  /* Centralizar horizontalmente */
+  transform: translate(-50%, -50%);
+  /* Ajuste fino da centralização */
+  width: 90%;
+  /* Limitar largura em mobile */
+  max-width: 800px;
+  /* Máximo para não ficar muito largo em desktop */
   color: white;
   z-index: 5;
-  text-align: center; /* Centralizar texto dentro do overlay */
+  text-align: center;
+  /* Centralizar texto dentro do overlay */
 }
 
 .title {
-  font-size: 3.5rem; /* Tamanho menor para mobile */
+  font-size: 3.5rem;
+  /* Tamanho menor para mobile */
   font-weight: bold;
   line-height: 1.1;
   margin-bottom: 0.3em;
 }
 
 .title span {
-  display: block; /* Mantém em linhas separadas */
-  font-size: 3.5rem; /* Igual ao título principal em mobile */
+  display: block;
+  /* Mantém em linhas separadas */
+  font-size: 3.5rem;
+  /* Igual ao título principal em mobile */
   font-weight: bold;
 }
 
 .slogan {
-  font-size: 1.2rem; /* Menor para mobile */
+  font-size: 1.2rem;
+  /* Menor para mobile */
   color: #ff69b4;
   margin: 0;
 }
 
 /* --- Seção Sobre Nós --- */
-.sobre-nos {
-  background-color: white;
-  padding: 40px 5%; /* Usar padding percentual */
-}
 
-.container {
-  display: flex;
-  flex-direction: column; /* Empilhar em mobile */
-  align-items: center; /* Centralizar itens empilhados */
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 30px;
-}
-
-.imagem, .texto {
-  flex: 1 1 100%; /* Ocupar toda a largura em mobile */
-  max-width: 500px; /* Limitar largura do texto */
-  text-align: center; /* Centralizar imagem e texto em mobile */
-}
-
-.imagem img {
-  width: 85%; /* Ajustar tamanho */
-  max-width: 400px; /* Limitar tamanho máximo da imagem */
-  height: auto;
-  border-radius: 10px;
-  display: block; /* Para centralizar com margin auto */
-  margin: 0 auto; /* Centralizar a imagem dentro do container .imagem */
-}
-
-.texto h2 {
-  color: #ff4ed7;
-  font-size: 2rem; /* Menor para mobile */
-  margin-bottom: 15px;
-}
-
-.texto p {
-  font-size: 1rem; /* Tamanho base para mobile */
-  line-height: 1.6;
-  color: #000;
-  text-align: left; /* Alinhar texto à esquerda para leitura */
-}
-
-.texto .destaque {
-  color: #ff4ed7;
-  font-weight: bold;
-}
-
-.botao {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px; /* Menor padding em mobile */
-  background-color: #ff4ed7;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.botao:hover {
-  background-color: #e443c4;
-  transform: scale(1.03); /* Efeito sutil no hover */
-}
-
-/* --- Seção Patrocinador --- */
-.sponsor-container {
-  display: flex;
-  flex-direction: column; /* Empilhar em mobile por padrão */
-  gap: 2.5rem;
-  padding: 40px 5%; /* Usar padding percentual */
-  background-color: #000;
-  color: #fff;
-  align-items: center; /* Centralizar itens na coluna */
-}
-
-.sponsor-left, .sponsor-right {
-  width: 100%; /* Ocupar largura total em mobile */
-  max-width: 500px; /* Limitar largura máxima */
-}
-
-.sponsor-left {
-  text-align: center; /* Centralizar título e imagem */
-}
-
-.sponsor-title {
-  color: #facc15;
-  font-size: 2.2rem; /* Menor em mobile */
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  white-space: normal; /* Permitir quebra de linha em mobile */
-}
-
-.sponsor-image {
-  width: 100%; /* Imagem responsiva */
-  max-width: 350px; /* Limite para não ficar enorme */
-  height: auto;
-  display: block;
-  margin: 0 auto; /* Centralizar */
-  border-radius: 8px; /* Adicionar borda arredondada se desejar */
-}
-
-.sponsor-right {
-  margin-top: 0;
-}
-
-.sponsor-item {
-  margin-bottom: 1.5rem;
-  text-align: center; /* Centralizar itens em mobile */
-}
-
-.sponsor-item h3 {
-  color: #facc15;
-  font-size: 1.5rem; /* Menor em mobile */
-  margin-bottom: 0.5rem;
-}
-
-.sponsor-item h3 span {
-  color: #fff;
-  margin-right: 0.5rem;
-}
-
-.sponsor-item p {
-  font-weight: normal;
-  font-size: 1rem; /* Tamanho base */
-  line-height: 1.5;
-}
 
 /* --- Seção Temporadas --- */
 .seasons-section {
-  padding: 40px 5%; /* Usar padding percentual */
+  padding: 40px 5%;
+  /* Usar padding percentual */
   text-align: center;
 }
 
 .seasons-title {
-  font-size: 2rem; /* Menor em mobile */
+  font-size: 2rem;
+  /* Menor em mobile */
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 .seasons-subtitle {
-  font-size: 1rem; /* Tamanho base */
+  font-size: 1rem;
+  /* Tamanho base */
   color: #444;
   margin-bottom: 2.5rem;
-  max-width: 600px; /* Limitar largura */
-  margin-left: auto; /* Centralizar */
-  margin-right: auto; /* Centralizar */
+  max-width: 600px;
+  /* Limitar largura */
+  margin-left: auto;
+  /* Centralizar */
+  margin-right: auto;
+  /* Centralizar */
 }
 
 .seasons-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem; /* Espaçamento entre os cards */
+  gap: 2rem;
+  /* Espaçamento entre os cards */
 }
 
 .season-card {
-  width: 90%; /* Ocupar quase toda largura em mobile */
-  max-width: 340px; /* Limitar largura máxima do card (padrão mobile/tablet) */
+  width: 90%;
+  /* Ocupar quase toda largura em mobile */
+  max-width: 340px;
+  /* Limitar largura máxima do card (padrão mobile/tablet) */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -329,26 +256,37 @@ body {
 }
 
 /* Classes de fundo - Aplicadas ao .season-image */
-.bg-masterpiece { background-color: #f2dfc4; }
-.bg-submerged { background-color: #8dd0f3; }
-.bg-unearthed { background-color: #f3a623; }
+.bg-masterpiece {
+  background-color: #f2dfc4;
+}
+
+.bg-submerged {
+  background-color: #8dd0f3;
+}
+
+.bg-unearthed {
+  background-color: #f3a623;
+}
 
 .season-image {
   width: 100%;
-  aspect-ratio: 16 / 10; /* Proporção base (um pouco mais alta) */
+  aspect-ratio: 16 / 10;
+  /* Proporção base (um pouco mais alta) */
   overflow: hidden;
 }
 
 .season-image img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; /* Para ver o logo inteiro */
+  object-fit: contain;
+  /* Para ver o logo inteiro */
   display: block;
-  transition: transform 0.4s ease; /* Para um leve zoom no hover */
+  transition: transform 0.4s ease;
+  /* Para um leve zoom no hover */
 }
 
 .season-card:hover .season-image img {
-   transform: scale(1.05); /* Leve zoom na imagem no hover do card */
+  transform: scale(1.05);
+  /* Leve zoom na imagem no hover do card */
 }
 
 .season-label {
@@ -358,7 +296,7 @@ body {
   padding: 0.8rem 0;
   font-weight: bold;
   font-size: 1.1rem;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   margin-top: auto;
 }
 
@@ -366,7 +304,8 @@ body {
 .quoteSection {
   background-color: #111827;
   color: #f9fafb;
-  padding: 3rem 5%; /* Usar padding percentual */
+  padding: 3rem 5%;
+  /* Usar padding percentual */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -376,8 +315,10 @@ body {
 
 .quoteText {
   margin: 0;
-  max-width: 75ch; /* Mantém boa legibilidade */
-  font-size: 1.25rem; /* Menor para mobile */
+  max-width: 75ch;
+  /* Mantém boa legibilidade */
+  font-size: 1.25rem;
+  /* Menor para mobile */
   line-height: 1.6;
   font-weight: 500;
 }
@@ -386,9 +327,11 @@ body {
 /* Classe base para elementos que serão animados */
 .reveal {
   opacity: 0;
-  transform: translateY(30px); /* Começa um pouco abaixo */
+  transform: translateY(30px);
+  /* Começa um pouco abaixo */
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform; /* Otimização */
+  will-change: opacity, transform;
+  /* Otimização */
 }
 
 /* Classe adicionada via JS quando o elemento está visível */
@@ -398,6 +341,318 @@ body {
 }
 
 
+/* src/CompetidoresCarousel.css */
+
+.competidores-carousel-container {
+  position: relative;
+  width: 90%;
+  /* Ajuste conforme necessário */
+  max-width: 1000px;
+  /* Limite a largura máxima em telas grandes */
+  margin: 30px auto;
+  /* Aumentei a margem superior/inferior */
+  padding-bottom: 50px;
+  /* Espaço para os dots e para não colar no conteúdo abaixo */
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
+  /* Opcional: bordas arredondadas para o viewport */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* A largura total é implicitamente (totalCarouselPages * 100%) devido ao min-width de .carousel-slide */
+}
+
+.carousel-slide {
+  min-width: 100%;
+  /* Cada slide (grupo de 3) ocupa 100% do viewport */
+  box-sizing: border-box;
+  display: flex;
+  /* justify-content: space-around;  Usaremos gap para espaçamento mais controlado */
+  align-items: stretch;
+  /* Faz os cards terem a mesma altura se o conteúdo variar */
+  padding: 0 10px;
+  /* Pequeno espaçamento nas laterais do slide (opcional, pode ser removido se usar gap) */
+  gap: 20px;
+  /* Espaço entre os cards dentro de um slide */
+}
+
+.competidor-card-wrapper {
+  /* flex: 1;  Permite que os cards cresçam para preencher o espaço */
+  /* O cálculo de 33.333% pode ser gerenciado pelo 'gap' e flex-basis se necessário,
+     mas para 3 itens, flex:1 em cada um com gap geralmente funciona bem.
+     Se quiser forçar 3 itens estritamente: */
+  flex-basis: calc((100% - (2 * 20px)) / 3);
+  /* 2 gaps de 20px, 3 itens */
+  max-width: calc((100% - (2 * 20px)) / 3);
+  min-width: 200px;
+  /* Para evitar que fiquem muito estreitos em certas situações */
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  /* Para que o card interno preencha o wrapper */
+}
+
+.competidor-card {
+  background-color: #ffffff;
+  /* Fundo branco para o card */
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  /* Card ocupa todo o wrapper */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Para o caso de alturas variáveis */
+}
+
+.competidor-card:hover {
+  transform: translateY(-6px);
+}
+
+.competidor-card-inner {
+  padding: 20px;
+  /* Mais padding interno */
+}
+
+.competidor-image {
+  width: 50%;
+  /* Tamanho fixo para a imagem */
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  /* Centraliza e adiciona margem inferior */
+  border: 4px solid #ececec;
+  /* Borda na imagem */
+  display: block;
+  /* Para que margin auto funcione horizontalmente */
+  user-select: none;
+}
+
+.competidor-nome {
+  font-size: 1.1rem;
+  /* Tamanho da fonte do nome */
+  font-weight: 600;
+  /* Peso da fonte */
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+  /* Melhor legibilidade */
+}
+
+.competidores-subtitle {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: -10px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  /* Ajusta para o botão ficar alinhado com o centro dos cards, não do viewport com padding */
+  transform: translateY(calc(-50% - 25px));
+  /* (Metade da altura do botão + metade do padding-bottom do container) */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Fundo branco semi-transparente */
+  color: #333;
+  /* Cor do ícone escura */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  /* Removido para controle com width/height */
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.8rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  /* Usado em @media para desktop */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.carousel-btn.left {
+  left: -22px;
+  /* Metade da largura do botão para ficar para fora */
+}
+
+.carousel-btn.right {
+  right: -22px;
+  /* Metade da largura do botão para ficar para fora */
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  /* Distância da base do container */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  /* Cor do dot inativo */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: #007bff;
+  /* Cor do dot ativo (azul, por exemplo) */
+  transform: scale(1.2);
+  /* Destaca o dot ativo */
+}
+
+.desktop-only {
+  display: flex;
+  /* Padrão para desktop é visível */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+  .competidores-carousel-container {
+    width: 95%;
+  }
+
+  .carousel-btn.left {
+    left: 15px;
+  }
+
+  .carousel-btn.right {
+    right: 35px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+    /* Esconde botões de seta em telas menores */
+  }
+
+  .competidores-carousel-container {
+    width: 100%;
+    /* Ocupa toda a largura no mobile */
+    padding: 0 0 40px 0;
+    /* Remove padding lateral, mantém inferior para os dots */
+  }
+
+  .carousel-slide {
+    padding: 0 15px;
+    /* Espaçamento nas laterais do slide para não colar nas bordas da tela */
+    gap: 15px;
+    /* Espaço menor entre os cards */
+  }
+
+  .competidor-card-wrapper {
+    /* Para manter 3 itens, eles podem ficar pequenos.
+       Alternativa: mostrar 2 ou 1 item. Para 3, ajustamos o flex-basis: */
+    flex-basis: calc((100% - (2 * 15px)) / 3);
+    max-width: calc((100% - (2 * 15px)) / 3);
+    min-width: 0;
+    /* Permitir que encolham mais */
+  }
+
+  .competidor-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .competidor-nome {
+    font-size: 0.9rem;
+  }
+
+  .competidores-title {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  .competidores-title {
+    font-size: 2em;
+  }
+
+  .competidor-card-wrapper {
+    /* Em telas muito pequenas, talvez seja melhor ter menos itens por slide.
+       Se mantiver 3, eles ficarão bem pequenos.
+       Exemplo para 2 itens por slide em telas < 480px (descomente se preferir):
+    */
+    /*
+    flex-basis: calc((100% - 10px) / 2);
+    max-width: calc((100% - 10px) / 2);
+    */
+
+    /* Mantendo 3 (vai ficar apertado): */
+    flex-basis: calc((100% - (2 * 10px)) / 3);
+    max-width: calc((100% - (2 * 10px)) / 3);
+  }
+
+  .competidor-card-inner {
+    padding: 10px;
+  }
+
+  .competidor-image {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+
+  .competidor-nome {
+    font-size: 0.8rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-dots {
+    gap: 8px;
+    bottom: 5px;
+  }
+}
+
+.competidores-title {
+  color: #007bff;
+  /* Um tom de azul comum, ajuste conforme sua paleta */
+  /* Outros estilos que você já possa ter para este título */
+  text-align: center;
+  /* Se quiser centralizar */
+  margin-top: 20px;
+  /* Espaçamento abaixo do título */
+  margin-bottom: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
 /* --- Media Queries --- */
 
 /* Tablet (Ex: >= 768px) */
@@ -405,126 +660,272 @@ body {
   /* Navbar UL já configurado para display: flex neste breakpoint */
 
   .img-section {
-    height: 85vh; /* Altura para tablet */
+    height: 85vh;
+    /* Altura para tablet */
   }
 
   .overlay {
-     left: 14%; /* Voltar ao alinhamento esquerdo */
-     transform: translateY(-50%); /* Remover translate X */
-     text-align: left; /* Alinhar texto à esquerda */
-     width: auto; /* Remover largura fixa */
+    left: 14%;
+    /* Voltar ao alinhamento esquerdo */
+    transform: translateY(-50%);
+    /* Remover translate X */
+    text-align: left;
+    /* Alinhar texto à esquerda */
+    width: auto;
+    /* Remover largura fixa */
   }
 
-  .title { font-size: 6rem; }
-  .title span { font-size: 6rem; }
-  .slogan { font-size: 1.5rem; }
-
-  .sobre-nos { padding: 60px 5%; }
-
-  .container {
-    flex-direction: row; /* Layout lado a lado */
-    align-items: center;
-    justify-content: center;
-    text-align: left; /* Resetar alinhamento do container */
-    gap: 40px; /* Espaçamento padrão entre imagem e texto para tablet */
+  .title {
+    font-size: 6rem;
   }
 
-  .imagem, .texto {
-    flex: 1 1 45%; /* Dividir espaço, permitindo encolher/crescer */
-    text-align: left; /* Alinhar conteúdo à esquerda */
-     min-width: 300px;
+  .title span {
+    font-size: 6rem;
   }
 
-  .imagem img {
-     width: 100%; /* Imagem ocupa o container .imagem */
-     max-width: none; /* Remover limite max-width de mobile */
-     margin: 0; /* Resetar margem */
+  .slogan {
+    font-size: 1.5rem;
   }
 
-  .texto h2 { font-size: 2.5rem; }
-  .texto p { font-size: 1.1rem; }
-
-  .sponsor-container {
-    flex-direction: row; /* Lado a lado */
-    justify-content: space-around; /* Espaçar */
-    align-items: flex-start; /* Alinhar itens ao topo */
-    padding: 60px 5%;
-    gap: 3rem;
+  .seasons-title {
+    font-size: 2.5rem;
   }
 
-  .sponsor-left { flex: 1 1 40%; max-width: 400px; text-align: left; }
-  .sponsor-right { flex: 1 1 55%; max-width: 600px; text-align: left; }
-  .sponsor-title { font-size: 2.8rem; text-align: left; }
-  .sponsor-image { margin: 0; max-width: 100%; }
-  .sponsor-item { text-align: left; }
-  .sponsor-item h3 { font-size: 1.8rem; }
-
-  .seasons-title { font-size: 2.5rem; }
-  .seasons-subtitle { font-size: 1.1rem; }
+  .seasons-subtitle {
+    font-size: 1.1rem;
+  }
 
   /* Cards das temporadas - 2 por linha */
   .season-card {
-     width: 45%; /* ~2 por linha */
-     max-width: 340px; /* Mantém o tamanho de tablet */
+    width: 45%;
+    /* ~2 por linha */
+    max-width: 340px;
+    /* Mantém o tamanho de tablet */
   }
-   .season-image {
-     aspect-ratio: 16 / 9; /* Pode voltar a 16:9 se preferir */
-   }
 
-  .quoteSection { padding: 4rem 5%; }
-  .quoteText { font-size: 1.6rem; }
+  .season-image {
+    aspect-ratio: 16 / 9;
+    /* Pode voltar a 16:9 se preferir */
+  }
+
+  .quoteSection {
+    padding: 4rem 5%;
+  }
+
+  .quoteText {
+    font-size: 1.6rem;
+  }
 }
 
 /* Desktop (Ex: >= 1024px) */
 @media (min-width: 1024px) {
-  .navbar { padding: 20px 5%; }
+  .navbar {
+    padding: 20px 5%;
+  }
+
   /* Navbar UL usa os mesmos estilos do tablet (flex, right-aligned) */
 
   .img-section {
-    height: 90vh; /* Altura original para desktop */
+    height: 90vh;
+    /* Altura original para desktop */
   }
 
-  .title { font-size: 8rem; }
-  .title span { font-size: 8rem; }
-  .slogan { font-size: 1.7rem; }
-
-   .sobre-nos { padding: 80px 5%; }
-
-   /* Aumentar o gap na seção sobre nós para dar mais espaço à imagem */
-   .container {
-     gap: 4rem; /* << MAIS ESPAÇO ENTRE IMAGEM E TEXTO */
-   }
-
-  .sponsor-container {
-     padding: 80px 5%;
-     gap: 4rem;
+  .title {
+    font-size: 8rem;
   }
-  .sponsor-title { font-size: 3rem; }
 
-  .seasons-section { padding: 80px 5%; }
+  .title span {
+    font-size: 8rem;
+  }
+
+  .slogan {
+    font-size: 1.7rem;
+  }
+
+  .seasons-section {
+    padding: 80px 5%;
+  }
 
   /* Cards das temporadas - 3 por linha e maiores */
   .season-card {
-     width: 30%; /* ~3 por linha */
-     max-width: 400px; /* << AUMENTADO O TAMANHO MÁXIMO DO CARD */
+    width: 30%;
+    /* ~3 por linha */
+    max-width: 400px;
+    /* << AUMENTADO O TAMANHO MÁXIMO DO CARD */
   }
-   .season-image {
-      /* A imagem vai crescer porque o card está maior, mantendo a aspect-ratio definida no breakpoint anterior (16/9) */
-   }
 
-  .quoteSection { padding: 5rem 5%; }
-  .quoteText { font-size: 2rem; }
+  .season-image {
+    /* A imagem vai crescer porque o card está maior, mantendo a aspect-ratio definida no breakpoint anterior (16/9) */
+  }
+
+  .quoteSection {
+    padding: 5rem 5%;
+  }
+
+  .quoteText {
+    font-size: 2rem;
+  }
 }
 
 /* Ajuste fino para telas muito pequenas (Opcional) */
 @media (max-width: 380px) {
-   .title { font-size: 3rem; }
-   .title span { font-size: 3rem; }
-   .slogan { font-size: 1rem; }
-   .texto h2 { font-size: 1.8rem; }
-   .sponsor-title { font-size: 2rem; }
-   .sponsor-item h3 { font-size: 1.3rem; }
-   .seasons-title { font-size: 1.8rem; }
-   .quoteText { font-size: 1.1rem; }
-   /* Gap já está configurado para mobile no .navbar ul.open */
+  .title {
+    font-size: 3rem;
+  }
+
+  .title span {
+    font-size: 3rem;
+  }
+
+  .slogan {
+    font-size: 1rem;
+  }
+
+  .texto h2 {
+    font-size: 1.8rem;
+  }
+
+  .seasons-title {
+    font-size: 1.8rem;
+  }
+
+  .quoteText {
+    font-size: 1.1rem;
+  }
+
+  /* Gap já está configurado para mobile no .navbar ul.open */
+}
+
+.team-layout-container {
+    display: flex;
+    flex-direction: column; /* Empilha as linhas verticalmente */
+    gap: 30px; /* Espaço vertical entre as linhas */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    /* Ajuste max-width para controlar a largura total.
+       Baseado em 4 itens de ~130px + borda + gap:
+       (130 + 10) * 4 + (gap_interno * 3) + (padding_container * 2)
+       (140 * 4) + (20 * 3) + (20*2) = 560 + 60 + 40 = 660px.
+       Ajuste conforme a aparência desejada. */
+    max-width: 700px; /* Largura máxima para o container geral */
+    margin: auto; /* Centraliza o container na página */
+    align-items: center; /* Centraliza as linhas se elas forem menores que max-width */
+}
+
+.team-row {
+    display: grid;
+    gap: 20px; /* Espaço entre os membros dentro de uma linha */
+    width: 100%; /* Faz a linha tentar ocupar a largura disponível */
+    /* Centraliza os itens da grade horizontalmente se houver espaço não utilizado
+       (útil para as linhas com menos de 4 itens) */
+    justify-content: center;
+}
+
+/* Configuração de colunas para cada tipo de linha */
+.team-row-4-cols {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4 colunas flexíveis */
+}
+
+.team-row-3-cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 colunas flexíveis */
+    /* Se quiser que a linha de 3 ocupe uma largura similar à de 4: */
+    /* max-width: calc((100% / 4) * 3 + 20px * 2); */ /* Ajuste complexo, 1fr é mais simples */
+}
+
+.team-row-2-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 colunas flexíveis */
+    /* max-width: calc((100% / 4) * 2 + 20px * 1); */
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Adicione uma largura máxima ao card se quiser que eles não estiquem demais
+       quando a linha tem poucas colunas e muito espaço.
+       O minmax(0, 1fr) no grid já ajuda a distribuir igualmente. */
+    /* max-width: 150px; */ /* Opcional: para controlar o tamanho máximo do card */
+}
+
+.member-image-wrapper {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 5px solid #E6007E;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-name {
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Ajustes para telas menores (opcional, mas recomendado) */
+@media (max-width: 768px) {
+    .team-layout-container {
+        max-width: 95%;
+        gap: 25px;
+    }
+
+    .team-row {
+        gap: 15px;
+    }
+
+    /* Em telas menores, você pode querer que todas as linhas tenham menos colunas */
+    .team-row-4-cols,
+    .team-row-3-cols {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Ex: máximo 2 colunas */
+    }
+    .team-row-2-cols {
+         /* Já tem 2, ou pode ir para 1 */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ou mais flexível */
+    }
+
+    .member-image-wrapper {
+        width: 110px;
+        height: 110px;
+        border-width: 4px;
+    }
+    .member-name {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-layout-container {
+        gap: 20px;
+    }
+    .team-row {
+        gap: 10px;
+    }
+    /* Em telas muito pequenas, talvez uma coluna para todos */
+    .team-row-4-cols,
+    .team-row-3-cols,
+    .team-row-2-cols {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        /* Ou forçar 1 coluna: grid-template-columns: 1fr; */
+    }
+
+    .member-image-wrapper {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+    }
+    .member-name {
+        font-size: 0.9em;
+    }
 }

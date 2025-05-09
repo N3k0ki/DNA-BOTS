@@ -1,0 +1,141 @@
+/* --- Seção Patrocinador --- */
+.sponsor-container {
+    display: flex;
+    flex-direction: column;
+    /* Empilhar em mobile por padrão */
+    gap: 2.5rem;
+    padding: 40px 5%;
+    /* Usar padding percentual */
+    background-color: #000;
+    color: #fff;
+    align-items: center;
+    /* Centralizar itens na coluna */
+}
+
+.sponsor-left,
+.sponsor-right {
+    width: 100%;
+    /* Ocupar largura total em mobile */
+    max-width: 600px;
+    /* Limitar largura máxima */
+}
+
+.sponsor-left {
+    text-align: center;
+    /* Centralizar título e imagem */
+}
+
+.sponsor-title {
+    color: #facc15;
+    font-size: 2.2rem;
+    /* Menor em mobile */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    white-space: normal;
+    /* Permitir quebra de linha em mobile */
+}
+
+.sponsor-image {
+    width: 100%;
+    max-width: 600px;
+    /* Máxima largura para não ultrapassar */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.sponsor-right {
+    margin-top: 0;
+}
+
+.sponsor-item {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    /* Centralizar itens em mobile */
+}
+
+.sponsor-item h3 {
+    color: #facc15;
+    font-size: 1.5rem;
+    /* Menor em mobile */
+    margin-bottom: 0.5rem;
+}
+
+.sponsor-item h3 span {
+    color: #fff;
+    margin-right: 0.5rem;
+}
+
+.sponsor-item p {
+    font-weight: normal;
+    font-size: 1rem;
+    /* Tamanho base */
+    line-height: 1.5;
+}
+
+
+@media (min-width: 768px) {
+    .sponsor-container {
+        flex-direction: row;
+        /* Lado a lado */
+        justify-content: space-around;
+        /* Espaçar */
+        align-items: center;
+        /* Alinhar itens ao topo */
+        padding: 60px 5%;
+        gap: 3rem;
+    }
+
+    .sponsor-left {
+        flex: 1 1 40%;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .sponsor-right {
+        flex: 1 1 55%;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .sponsor-title {
+        font-size: 2.8rem;
+        text-align: left;
+    }
+
+    .sponsor-image {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .sponsor-item {
+        text-align: left;
+    }
+
+    .sponsor-item h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sponsor-container {
+        padding: 80px 5%;
+        gap: 4rem;
+    }
+
+    .sponsor-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .sponsor-title {
+        font-size: 2rem;
+    }
+
+    .sponsor-item h3 {
+        font-size: 1.3rem;
+    }
+}
