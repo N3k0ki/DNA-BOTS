@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import AboutUs from './componentes/homepage/AboutUsSection/aboutus';
 import Sponsor from './componentes/homepage/SponsorSection/Sponsor';
 import NavBar from './componentes/homepage/Navbar/navbar';
+import RobotShowcase from './componentes/homepage/robot/robot';
 import './App.css'; // Certifique-se que o CSS está sendo importado corretamente
 
 // Suas importações de imagens
@@ -172,28 +173,8 @@ function Home() {
 
 
 
-      <section className="seasons-section reveal" ref={addToRefs}>
-        <h2 className="seasons-title">Temporadas</h2>
-        <p className="seasons-subtitle">
-          Cada temporada, um novo desafio. Cada desafio, uma nova conquista.
-        </p>
-        <div className="seasons-grid">
-          {seasons.map((season, index) => (
-            <div
-              key={index}
-              className="season-card clickable-card reveal"
-              ref={addToRefs}
-              onClick={() => handleNavClick(season.path)}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
-              <div className={`season-image ${season.cssClass}`}>
-                <img src={season.image} alt={`Logo da temporada ${season.title}`} />
-              </div>
-              <div className="season-label">{season.title}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      
+
       <section className="quoteSection reveal" ref={addToRefs}>
         <blockquote className="quoteText">
           <p>
@@ -267,7 +248,8 @@ function Home() {
         </div>
       </section>
       {/* --- Fim da Seção dos Competidores --- */}
-
+        
+     <RobotShowcase />
 
     </div>
   );

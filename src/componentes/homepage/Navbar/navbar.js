@@ -27,8 +27,9 @@ function NavBar() {
             <ul className={isMenuOpen ? 'open' : ''}>
                 <li onClick={() => handleNavClick('/')}>Sobre</li>
                 <li onClick={() => handleNavClick('/patrocinador')}>Seja Patrocinador</li>
-                <li onClick={() => handleNavClick('/temporadas')}>Temporadas</li>
-                <li onClick={() => handleNavClick('/competidores')}>Competidores</li>
+                <li onClick={() => handleNavClick('/familia')}>Para Familias</li>
+                <li onClick={() => handleNavClick('/familia')}>Para Escolas</li>
+                <li onClick={() => handleNavClick('/faleconosco')}>Fale Conosco</li>
             </ul>
         </nav>
     )

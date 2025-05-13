@@ -19,8 +19,17 @@
     /* Estilos para quando estiver aberto em mobile (serão adicionados pela classe .open) */
   }
   
-  /* Estilos para Tablet/Desktop (mostra a lista horizontalmente) */
+  .open {
+    transform: translateX(-100px); /* move 100px para a esquerda */
+    transition: transform 0.3s ease;
+  }
+
+  
   @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+      /* Esconder em telas maiores */
+    }
     .navbar ul {
       display: flex;
       /* Mostrar como flex em telas maiores */
@@ -68,13 +77,6 @@
     transform: translateY(-50%);
     z-index: 110;
     /* Acima do menu quando fechado */
-  }
-  
-  @media (min-width: 768px) {
-    .menu-toggle {
-      display: none;
-      /* Esconder em telas maiores */
-    }
   }
   
   /* Estilos do Menu Aberto (Mobile) */

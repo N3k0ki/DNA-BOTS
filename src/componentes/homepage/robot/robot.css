@@ -1,0 +1,107 @@
+.robot-body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #c8f7ff);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.robot-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.robot-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.robot-section p {
+    margin-bottom: 0.5rem;
+}
+
+.versions-container {
+    display: flex;
+    justify-content: space-around;
+    /* mais espaçamento entre os cards */
+    align-items: flex-end;
+    flex-wrap: wrap;
+    /* se a tela for muito pequena, os cards descem */
+    gap: 2rem;
+    width: 150%;
+    padding: 2rem 4rem;
+    /* mais espaço nas laterais */
+    box-sizing: border-box;
+    margin-left: -22%;
+}
+
+.robot-card {
+    flex: 1;
+    max-width: 18%;
+    /* cerca de 5 cards por linha com espaçamento */
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    box-sizing: border-box;
+}
+
+.robot-card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.betinho-img {
+    width: 80%; /* Ajuste para o tamanho que preferir */
+    height: auto;
+    align-items: center;
+}
+
+.libelula-img {
+    width: 80%; /* Ajuste para o tamanho que preferir */
+    height: auto;
+}
+
+.robot-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    text-align: left;
+}
+
+.robot-card li {
+    margin: 0.3rem 0;
+}
+
+.robot-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --- Animação de entrada suave --- */
+.robot-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.robot-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação para os cards individualmente */
+.robot-card {
+    opacity: 1;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.robot-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
