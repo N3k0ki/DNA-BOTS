@@ -1,0 +1,47 @@
+.quoteSection {
+    background-color: #111827;
+    color: #f9fafb;
+    padding: 3rem 5%;
+    /* Usar padding percentual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+}
+
+.quoteText {
+    margin: 0;
+    max-width: 75ch;
+    /* Mantém boa legibilidade */
+    font-size: 1.25rem;
+    /* Menor para mobile */
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+@media (Min-width:768px) {
+    .quoteSection {
+        padding: 4rem 5%;
+    }
+
+    .quoteText {
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width:1024px) {
+    .quoteSection {
+        padding: 5rem 5%;
+    }
+
+    .quoteText {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width:380px){
+    .quoteText {
+    font-size: 1.1rem;
+  }
+}

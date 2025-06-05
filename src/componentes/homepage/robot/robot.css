@@ -105,3 +105,18 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 768px) {
+  .versions-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .robot-card {
+    max-width: 90%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,139 @@
+.seasons-section {
+  padding: 40px 5%;
+  /* Usar padding percentual */
+  text-align: center;
+}
+
+.seasons-title {
+  font-size: 2rem;
+  /* Menor em mobile */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.seasons-subtitle {
+  font-size: 1rem;
+  /* Tamanho base */
+  color: #444;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  /* Limitar largura */
+  margin-left: auto;
+  /* Centralizar */
+  margin-right: auto;
+  /* Centralizar */
+}
+
+.seasons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  /* Espaçamento entre os cards */
+}
+
+.season-card {
+  width: 90%;
+  /* Ocupar quase toda largura em mobile */
+  max-width: 340px;
+  /* Limitar largura máxima do card (padrão mobile/tablet) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.season-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Classes de fundo - Aplicadas ao .season-image */
+.bg-masterpiece {
+  background-color: #f2dfc4;
+}
+
+.bg-submerged {
+  background-color: #8dd0f3;
+}
+
+.bg-unearthed {
+  background-color: #f3a623;
+}
+
+.season-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  /* Proporção base (um pouco mais alta) */
+  overflow: hidden;
+}
+
+.season-image img {
+  width: 100%;
+  object-fit: contain;
+  /* Para ver o logo inteiro */
+  display: block;
+  transition: transform 0.4s ease;
+  /* Para um leve zoom no hover */
+}
+
+.season-card:hover .season-image img {
+  transform: scale(1.05);
+  /* Leve zoom na imagem no hover do card */
+}
+
+.season-label {
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  padding: 0.8rem 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+}
+
+@media (min-width:768px){
+    .seasons-title {
+    font-size: 2.5rem;
+  }
+
+  .seasons-subtitle {
+    font-size: 1.1rem;
+  }
+
+  /* Cards das temporadas - 2 por linha */
+  .season-card {
+    width: 45%;
+    /* ~2 por linha */
+    max-width: 340px;
+    /* Mantém o tamanho de tablet */
+  }
+
+  .season-image {
+    aspect-ratio: 16 / 9;
+    /* Pode voltar a 16:9 se preferir */
+  }
+}
+
+@media (min-width:1024px){
+    .seasons-section {
+    padding: 80px 5%;
+  }
+
+  /* Cards das temporadas - 3 por linha e maiores */
+  .season-card {
+    width: 30%;
+    /* ~3 por linha */
+    max-width: 400px;
+    /* << AUMENTADO O TAMANHO MÁXIMO DO CARD */
+  }
+
+  .season-image {
+    /* A imagem vai crescer porque o card está maior, mantendo a aspect-ratio definida no breakpoint anterior (16/9) */
+  }
+}

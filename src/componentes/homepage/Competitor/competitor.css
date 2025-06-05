@@ -1,0 +1,327 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  /* Começa um pouco abaixo */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+  /* Otimização */
+}
+
+/* Classe adicionada via JS quando o elemento está visível */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* src/CompetidoresCarousel.css */
+
+.competidores-carousel-container {
+  position: relative;
+  width: 90%;
+  /* Ajuste conforme necessário */
+  max-width: 1000px;
+  /* Limite a largura máxima em telas grandes */
+  margin: 30px auto;
+  /* Aumentei a margem superior/inferior */
+  padding-bottom: 50px;
+  /* Espaço para os dots e para não colar no conteúdo abaixo */
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 8px;
+  /* Opcional: bordas arredondadas para o viewport */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  /* A largura total é implicitamente (totalCarouselPages * 100%) devido ao min-width de .carousel-slide */
+}
+
+.carousel-slide {
+  min-width: 100%;
+  /* Cada slide (grupo de 3) ocupa 100% do viewport */
+  box-sizing: border-box;
+  display: flex;
+  /* justify-content: space-around;  Usaremos gap para espaçamento mais controlado */
+  align-items: stretch;
+  /* Faz os cards terem a mesma altura se o conteúdo variar */
+  padding: 0 10px;
+  /* Pequeno espaçamento nas laterais do slide (opcional, pode ser removido se usar gap) */
+  gap: 20px;
+  /* Espaço entre os cards dentro de um slide */
+}
+
+.competidor-card-wrapper {
+  /* flex: 1;  Permite que os cards cresçam para preencher o espaço */
+  /* O cálculo de 33.333% pode ser gerenciado pelo 'gap' e flex-basis se necessário,
+     mas para 3 itens, flex:1 em cada um com gap geralmente funciona bem.
+     Se quiser forçar 3 itens estritamente: */
+  flex-basis: calc((100% - (2 * 20px)) / 3);
+  /* 2 gaps de 20px, 3 itens */
+  max-width: calc((100% - (2 * 20px)) / 3);
+  min-width: 200px;
+  /* Para evitar que fiquem muito estreitos em certas situações */
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  /* Para que o card interno preencha o wrapper */
+}
+
+.competidor-card {
+  background-color: #ffffff;
+  /* Fundo branco para o card */
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  /* Card ocupa todo o wrapper */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Para o caso de alturas variáveis */
+}
+
+.competidor-card:hover {
+  transform: translateY(-6px);
+}
+
+.competidor-card-inner {
+  padding: 20px;
+  /* Mais padding interno */
+}
+
+.competidor-image {
+  width: 50%;
+  /* Tamanho fixo para a imagem */
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  /* Centraliza e adiciona margem inferior */
+  border: 4px solid #ececec;
+  /* Borda na imagem */
+  display: block;
+  /* Para que margin auto funcione horizontalmente */
+  user-select: none;
+}
+
+.competidor-nome {
+  font-size: 1.1rem;
+  /* Tamanho da fonte do nome */
+  font-weight: 600;
+  /* Peso da fonte */
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+  /* Melhor legibilidade */
+}
+
+.competidores-subtitle {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: -10px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  /* Ajusta para o botão ficar alinhado com o centro dos cards, não do viewport com padding */
+  transform: translateY(calc(-50% - 25px));
+  /* (Metade da altura do botão + metade do padding-bottom do container) */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Fundo branco semi-transparente */
+  color: #333;
+  /* Cor do ícone escura */
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  /* Removido para controle com width/height */
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.8rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  /* Usado em @media para desktop */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.carousel-btn.left {
+  left: -22px;
+  /* Metade da largura do botão para ficar para fora */
+}
+
+.carousel-btn.right {
+  right: -22px;
+  /* Metade da largura do botão para ficar para fora */
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  /* Distância da base do container */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  /* Cor do dot inativo */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: #007bff;
+  /* Cor do dot ativo (azul, por exemplo) */
+  transform: scale(1.2);
+  /* Destaca o dot ativo */
+}
+
+.desktop-only {
+  display: flex;
+  /* Padrão para desktop é visível */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 1024px) {
+  .competidores-carousel-container {
+    width: 95%;
+  }
+
+  .carousel-btn.left {
+    left: 15px;
+  }
+
+  .carousel-btn.right {
+    right: 35px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+    /* Esconde botões de seta em telas menores */
+  }
+
+  .competidores-carousel-container {
+    width: 100%;
+    /* Ocupa toda a largura no mobile */
+    padding: 0 0 40px 0;
+    /* Remove padding lateral, mantém inferior para os dots */
+  }
+
+  .carousel-slide {
+    padding: 0 15px;
+    /* Espaçamento nas laterais do slide para não colar nas bordas da tela */
+    gap: 15px;
+    /* Espaço menor entre os cards */
+  }
+
+  .competidor-card-wrapper {
+    /* Para manter 3 itens, eles podem ficar pequenos.
+       Alternativa: mostrar 2 ou 1 item. Para 3, ajustamos o flex-basis: */
+    flex-basis: calc((100% - (2 * 15px)) / 3);
+    max-width: calc((100% - (2 * 15px)) / 3);
+    min-width: 0;
+    /* Permitir que encolham mais */
+  }
+
+  .competidor-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .competidor-nome {
+    font-size: 0.9rem;
+  }
+
+  .competidores-title {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  .competidores-title {
+    font-size: 2em;
+  }
+
+  .competidor-card-wrapper {
+    /* Em telas muito pequenas, talvez seja melhor ter menos itens por slide.
+       Se mantiver 3, eles ficarão bem pequenos.
+       Exemplo para 2 itens por slide em telas < 480px (descomente se preferir):
+    */
+    /*
+    flex-basis: calc((100% - 10px) / 2);
+    max-width: calc((100% - 10px) / 2);
+    */
+
+    /* Mantendo 3 (vai ficar apertado): */
+    flex-basis: calc((100% - (2 * 10px)) / 3);
+    max-width: calc((100% - (2 * 10px)) / 3);
+  }
+
+  .competidor-card-inner {
+    padding: 10px;
+  }
+
+  .competidor-image {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+
+  .competidor-nome {
+    font-size: 0.8rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carousel-dots {
+    gap: 8px;
+    bottom: 5px;
+  }
+}
+
+.competidores-title {
+  color: #007bff;
+  /* Um tom de azul comum, ajuste conforme sua paleta */
+  /* Outros estilos que você já possa ter para este título */
+  text-align: center;
+  /* Se quiser centralizar */
+  margin-top: 20px;
+  /* Espaçamento abaixo do título */
+  margin-bottom: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+}

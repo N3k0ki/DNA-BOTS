@@ -1,9 +1,18 @@
-
 import React, { useEffect, useRef } from 'react';
-import "./sponsor.css"
-
+import { useNavigate } from 'react-router-dom';
+import "./season.css";
+import Master from "../../../assets/temporadas/masterpiece/masterpiece.png";
+import Sub from "../../../assets/temporadas/submerged/submerged.png";
+import Une from "../../../assets/temporadas/unearthed/unearthed.png";
 
 function Season() {
+    const navigate = useNavigate();
+
+    const seasons = [
+        { title: "Masterpiece", image: Master, cssClass: "bg-masterpiece", path: "/temporada/masterpiece" },
+        { title: "Submerged", image: Sub, cssClass: "bg-submerged", path: "/temporada/submerged" },
+        { title: "Unearthed", image: Une, cssClass: "bg-unearthed", path: "/temporada/unearthed" },
+    ];
 
     const revealRefs = useRef([]);
     revealRefs.current = [];
@@ -14,39 +23,29 @@ function Season() {
         }
     };
 
-    useEffect(() => {
-        if (typeof window === 'undefined') {
-            return;
+    const handleNavClick = (path) => {
+        if (path && typeof path === 'string') {
+            navigate(path);
+        } else {
+            console.error("Caminho de navegação inválido:", path);
         }
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        // entry.target.classList.remove('visible'); // Para reverter animação ao sair da tela
-                    }
-                });
-            },
-            {
-                threshold: 0.1
-            }
-        );
+    };
 
-        const currentRefs = revealRefs.current;
-        currentRefs.forEach(ref => {
-            if (ref) {
-                observer.observe(ref);
-            }
-        });
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
 
-        return () => {
-            currentRefs.forEach(ref => {
-                if (ref) {
-                    observer.unobserve(ref);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        };
+        }, { threshold: 0.1 });
+
+        const currentRefs = revealRefs.current;
+        currentRefs.forEach(ref => observer.observe(ref));
+
+        return () => currentRefs.forEach(ref => observer.unobserve(ref));
     }, []);
 
     return (
@@ -72,7 +71,7 @@ function Season() {
                 ))}
             </div>
         </section>
-    )
-};
+    );
+}
 
 export default Season;
