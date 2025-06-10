@@ -419,10 +419,22 @@ body {
     margin: 0;
     max-width: 75ch;
     /* Mantém boa legibilidade */
-    font-size: 2rem;
+    font-size: 1.25rem;
     /* Menor para mobile */
     line-height: 1.6;
     font-weight: 500;
+}
+
+
+@media (Min-width:768px) {
+    .SteamText {
+        font-size: 1.6rem;
+    }
+}
+@media (Min-width:1024px) {
+     .SteamText{
+       font-size: 2rem;
+     }
 }
 
 
