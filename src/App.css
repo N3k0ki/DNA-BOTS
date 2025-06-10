@@ -379,3 +379,92 @@ body {
   width: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+
+.steam_p{
+  font-weight: lighter;
+}
+
+.steam_section{
+    background-color: #111827;
+    color: #f9fafb;
+    padding: 3rem 5%;
+    /* Usar padding percentual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+
+}
+
+.learn_section{
+    background-color: #fff;
+    color: #000;
+    padding: 3rem 5%;
+    /* Usar padding percentual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+}
+
+.learn_h3{
+  color: #007bff;
+}
+
+.SteamText {
+    margin: 0;
+    max-width: 75ch;
+    /* Mantém boa legibilidade */
+    font-size: 2rem;
+    /* Menor para mobile */
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+
+
+/* carrossel*/
+
+.carrossel-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.carrossel-trilha {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.carrossel-imagem {
+  width: 100%;
+  max-width: 400px;
+  /* aspect-ratio: 3 / 2; */
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 900px) {
+  .carrossel-imagem {
+    max-width: 90vw;
+  }
+}
+
