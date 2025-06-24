@@ -6,16 +6,23 @@ import RobotShowcase from './componentes/homepage/robot/robot';
 import Season from './componentes/homepage/SeasonsSection/season';
 import Competidores from './componentes/homepage/Competitor/competitor';
 import Quote from './componentes/homepage/QuoteSection/quote';
+import SteamSection from './componentes/homepage/Steam/SteamSection';
+
 import steam1 from './assets/Steam1.jpg';
 import steam2 from './assets/Steam2.jpeg';
 import steam3 from './assets/Steam3.jpeg';
 import steam4 from './assets/Steam4.jpeg';
 import steam5 from './assets/Steam5.jpeg';
-import steam6 from './assets/Steam6.png'
+import steam6 from './assets/Steam6.png';
+import steam7 from './assets/temporadas/submerged/equipe2025/amistoso1.jpg'
+import steam8 from './assets/temporadas/submerged/equipe2025/amistoso2.jpg'
+import steam9 from './assets/temporadas/submerged/equipe2025/amistoso3.jpg'
 import './App.css'; // Certifique-se que o CSS está sendo importado corretamente
 import React, { useEffect, useState } from 'react';
 // Suas importações de imagens
 import ESub from "./assets/temporadas/submerged/Dnabots.jpg";
+import Eune from "./assets/temporadas/unearthed/Eune.jpg";
+
 
 
 // import { useNavigate } from 'react-router-dom';
@@ -26,7 +33,10 @@ function Home() {
     steam3,
     steam4,
     steam5,
-    steam6
+    steam6,
+    steam7, 
+    steam8,
+    steam9
   ];
 
   const [indice, setIndice] = useState(0);
@@ -54,7 +64,9 @@ function Home() {
     <div className="App">
       <NavBar />
       <section className="img-section">
-        <img className="background-img" src={ESub} alt="Equipe DNA Bots em competição" />
+        <img className="background-img img1" src={ESub} alt="Equipe DNA Bots em competição" />
+        <img className="background-img img2" src={Eune} alt="Equipe DNA Bots 2" />
+
         <div className="overlay">
           <h1 className="title">DNA <span>BOTS</span></h1>
           <p className="slogan">“A robótica está no nosso DNA!”</p>
@@ -62,38 +74,9 @@ function Home() {
       </section>
 
       <AboutUs />
-      <section className="steam_section reveal">
-        <blockquote className="quoteText">
-          <h3 className='steam_h3'>O que é o Método STEAM?</h3>
-          <p className='steam_p'>
-            O método STEAM integra <b>Ciência</b>, <b>Tecnologia</b>, <b>Engenharia</b>, <b>Artes</b> e <b>Matemática</b> em uma abordagem prática e interdisciplinar, que conecta teoria e realidade. Ele desenvolve habilidades como pensamento crítico, criatividade, trabalho em equipe e protagonismo.
-          </p>
-          <p className='steam_p'>
-            A <b>DNA Bots</b> adota o STEAM em seus projetos de robótica, incentivando soluções criativas e preparando seus membros para os desafios do futuro.
-          </p>
-        </blockquote>
-      </section>
-      <section className="learn_section reveal">
-        <blockquote className="SteamText">
-          <h3 className='learn_h3'>Aprenda a usar o método STEAM</h3>
-          <p className='steam_p'>
-            Na prática, o STEAM pode ser aplicado por meio de projetos que envolvem resolução de problemas reais, uso de ferramentas tecnológicas, construção de protótipos, experimentos e atividades criativas que unam lógica e expressão artística.
-          </p>
-
-          <div className="carousel-container">
-            <div className="carrossel-container">
-              <div className={`carrossel-trilha ${fade ? 'fade-in' : 'fade-out'}`}>
-                {imagensVisiveis.map((src, i) => (
-                  <img key={i} src={src} alt={`Slide ${i}`} className="carrossel-imagem" />
-                ))}
-              </div>
-            </div>
-          </div>
-        </blockquote>
-      </section>
+      <SteamSection />
       <Sponsor />
       <Season />
-
       <Competidores />
       <RobotShowcase />
 

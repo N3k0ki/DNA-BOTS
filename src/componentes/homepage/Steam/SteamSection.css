@@ -1,0 +1,43 @@
+.steam_p{
+  font-weight: lighter;
+}
+
+.steam_section{
+    background-color: #111827;
+    color: #f9fafb;
+    padding: 3rem 5%;
+    /* Usar padding percentual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+
+}
+
+.learn_section{
+    background-color: #fff;
+    color: #000;
+    padding: 3rem 5%;
+    /* Usar padding percentual */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+}
+
+.learn_h3{
+  color: #007bff;
+}
+
+.SteamText {
+    margin: 0;
+    max-width: 75ch;
+    /* Mantém boa legibilidade */
+    font-size: 2rem;
+    /* Menor para mobile */
+    line-height: 1.6;
+    font-weight: 500;
+}
+
