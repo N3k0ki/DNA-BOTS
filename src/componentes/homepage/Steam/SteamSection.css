@@ -36,9 +36,8 @@
     margin: 0;
     max-width: 75ch;
     /* Mantém boa legibilidade */
-    font-size: 2rem;
+    font-size: 1.55rem;
     /* Menor para mobile */
     line-height: 1.6;
     font-weight: 500;
 }
-

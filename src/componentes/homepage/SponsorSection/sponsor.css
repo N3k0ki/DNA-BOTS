@@ -148,6 +148,9 @@
     .sponsor-item h3 {
         font-size: 1.8rem;
     }
+    .more-info{
+        max-width: 80%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -165,7 +168,9 @@
     .sponsor-title {
         font-size: 2rem;
     }
-
+.more-info{
+    max-width: 70%;
+}
     .sponsor-item h3 {
         font-size: 1.3rem;
     }
