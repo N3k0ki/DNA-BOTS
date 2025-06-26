@@ -1,3 +1,5 @@
+@import url(./styles/global.css);
+
 /* Estilos Globais e Base (Mobile First Approach - Implícito) */
 body {
   margin: 0;
@@ -57,21 +59,36 @@ body {
   z-index: 0;
 }
 
-/* Animação para imagem 1 */
-@keyframes fadeInOut1 {
-  0% { opacity: 1; }
-  45% { opacity: 1; }
-  50% { opacity: 0; }
-  95% { opacity: 0; }
-  100% { opacity: 1; }
+.img3{
+  animation: fadeInOut3 10s infinite ease-in-out;
+  z-index: 0;
 }
 
-/* Animação para imagem 2 */
+/* Animação para imagem 1 */
+/* Imagem 1 visível de 0% a 33% */
+@keyframes fadeInOut1 {
+  0% { opacity: 1; }
+  30% { opacity: 1; }
+  33.33% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Imagem 2 visível de 33.33% a 66.66% */
 @keyframes fadeInOut2 {
   0% { opacity: 0; }
-  45% { opacity: 0; }
-  50% { opacity: 1; }
-  95% { opacity: 1; }
+  33.33% { opacity: 0; }
+  36.66% { opacity: 1; }
+  63.33% { opacity: 1; }
+  66.66% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Imagem 3 visível de 66.66% a 100% */
+@keyframes fadeInOut3 {
+  0% { opacity: 0; }
+  66.66% { opacity: 0; }
+  70% { opacity: 1; }
+  96.66% { opacity: 1; }
   100% { opacity: 0; }
 }
 
@@ -404,8 +421,9 @@ body {
 }
 
 .social-section .right {
-  max-width: 500px;
+  max-width: 31.25rem;
   width: 100%;
+  height: auto  ;
 }
 
 .media-container {
@@ -416,14 +434,10 @@ body {
 }
 
 .widget-container {
-  max-width: 370px;
+  max-width: 23.125rem;
   width: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-
-
-
-
 
 /* carrossel*/
 
@@ -488,3 +502,155 @@ body {
 
 
 /*  */
+
+
+
+
+
+.hero-section {
+  background-color: rgb(255, 184, 211); /* Cor vermelha forte */
+  padding: 40px 20px;
+  color: white;
+  min-height: 60vh; /* Para garantir que o fundo ocupe a tela toda */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.hero-title .first {
+  color: white; /* Parte branca do título */
+}
+
+.hero-title .lego-league {
+  color: white; /* Parte branca do título, ajustado para ser todo branco como na imagem original */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column; /* Padrão para mobile */
+  gap: 40px;
+  max-width: 80%;
+  width: 100%;
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Garante que a imagem não vaze */
+  border-radius: 8px; /* Borda arredondada suave */
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove espaço extra abaixo da imagem */
+  object-fit: cover; /* Garante que a imagem preencha o container */
+}
+
+.hero-text-container {
+  flex: 1;
+  line-height: 1.6;
+  font-size: 1em;
+}
+
+.hero-text-container ul {
+  list-style-type: disc; /* Marcadores de bolinha */
+  margin-left: 20px;
+  padding: 0;
+}
+
+.hero-text-container ul li {
+  margin-bottom: 10px;
+}
+
+/* Responsividade para desktop */
+@media (min-width: 768px) {
+  .hero-content {
+    flex-direction: row; /* Layout de duas colunas para desktop */
+  }
+
+  .hero-image-container {
+    flex: 0 0 55%; /* Ajusta a largura da imagem para ser maior */
+  }
+
+  .hero-text-container {
+    flex: 0 0 45%; /* Ajusta a largura do texto */
+  }
+
+  .hero-title {
+    font-size: 4em; /* Aumenta o tamanho da fonte do título no desktop */
+  }
+}
+
+
+.support {
+  margin: 3%;
+}
+
+.supporter h4 {
+  font-size: 2em; /* Ex: 32px para um base de 16px */
+  margin-bottom: 1%;
+}
+
+.p_sup {
+  text-align: center;
+  margin-top: 0;
+  font-size: 2em; /* Ex: 32px para um base de 16px */
+  padding: 0; /* Adicionei um valor, pois estava vazio */
+}
+
+/* Media Query para telas menores, como tablets e celulares (max-width: 768px) */
+@media (max-width: 768px) {
+  .support {
+    margin: 5%; /* Aumenta a margem para dar mais "respiro" em telas menores */
+  }
+
+  .supporter h4 {
+    font-size: 1.5em; /* Reduz o tamanho da fonte para títulos */
+    margin-bottom: 2%; /* Ajusta a margem para acomodar o novo tamanho */
+  }
+
+  .p_sup {
+    font-size: 1.2em; /* Reduz o tamanho da fonte para parágrafos */
+  }
+}
+
+/* Media Query para celulares muito pequenos (max-width: 480px) */
+@media (max-width: 480px) {
+  .support {
+    margin: 8%; /* Mais margem em telas muito pequenas */
+  }
+
+  .supporter h4 {
+    font-size: 1.2em; /* Redução adicional para títulos em telas muito pequenas */
+    margin-bottom: 3%;
+  }
+
+  .p_sup {
+    font-size: 1em; /* Tamanho base ou ligeiramente menor para parágrafos */
+  }
+}
+
+.school{
+  max-width: 70%;
+  margin:auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.school h3{
+  margin-bottom: 0;
+}
+
+.sponsor{
+  margin-bottom: 5%;
+}

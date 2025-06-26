@@ -1,3 +1,5 @@
+@import url(../../../styles/global.css);
+
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -193,7 +195,7 @@
 }
 
 .dot.active {
-  background-color: #007bff;
+  background-color: var(--cor-principal);
   /* Cor do dot ativo (azul, por exemplo) */
   transform: scale(1.2);
   /* Destaca o dot ativo */
@@ -314,7 +316,7 @@
 }
 
 .competidores-title {
-  color: #007bff;
+  color: var(--cor-principal);
   /* Um tom de azul comum, ajuste conforme sua paleta */
   /* Outros estilos que você já possa ter para este título */
   text-align: center;

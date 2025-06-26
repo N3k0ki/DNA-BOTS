@@ -103,10 +103,11 @@ function Competidores() {
     return () => observer.disconnect();
   }, []);
 
+
+  
   return (
     <section className="competidores-section reveal" ref={addToRefs}>
       <p className="competidores-title">Competidores</p>
-      <p className="competidores-subtitle">clique para saber mais!</p>
 
       <div className="competidores-carousel-container">
         <div className="carousel-viewport">

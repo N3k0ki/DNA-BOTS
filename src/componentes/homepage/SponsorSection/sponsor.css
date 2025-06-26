@@ -1,3 +1,5 @@
+@import url(../../../styles/global.css);
+
 /* --- Seção Patrocinador --- */
 .sponsor-container {
     display: flex;
@@ -75,6 +77,35 @@
     line-height: 1.5;
 }
 
+.more-info{
+    background-color: #facc15;
+    color: #fff;
+    border-radius: 32px;
+    text-align: center;
+    max-width: 40%;
+    margin: auto;
+    font-weight: bold;
+    padding: 5px 0 6px 0;
+    font-size: 1.5rem;
+    margin-top: 30px;
+
+    /* Propriedade para a animação de pulso (aumentar e diminuir) */
+    animation: pulse-more-info 1.5s infinite ease-in-out; /* Duração, repetição e temporização */
+}
+
+/* Definição da animação de pulso */
+@keyframes pulse-more-info {
+    0% {
+        transform: scale(1); /* No início, o botão está no seu tamanho normal */
+    }
+    50% {
+        transform: scale(1.05); /* No meio da animação, o botão aumenta em 5% */
+        /* Você pode ajustar 1.05 para um efeito maior (ex: 1.1) ou menor (ex: 1.02) */
+    }
+    100% {
+        transform: scale(1); /* No final, o botão volta ao seu tamanho normal */
+    }
+}
 
 @media (min-width: 768px) {
     .sponsor-container {

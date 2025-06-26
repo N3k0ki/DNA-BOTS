@@ -1,6 +1,7 @@
+@import url(../../../styles/global.css);
 .robot-body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #ffffff, #c8f7ff);
+    background: linear-gradient(to bottom, #ffffff, var(--cor-principal));
     margin: 0;
     padding: 0;
     color: #333;
